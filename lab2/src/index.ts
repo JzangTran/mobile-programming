@@ -1,28 +1,37 @@
-import { displayNumberRadom, displayString, rejectWithError, resolveNumber, simulateTask } from "./a";
+import * as A from "./a/index.js";
+import * as B from "./b/index.js";
+import * as C from "./c/index.js";
 
-displayString.then((value) => {
-    console.log(value);
-})
+console.log("=== Run A ===")
+A.ex1.then(console.log)
+A.ex2().then(console.log)
+A.ex3().catch(console.error)
+await A.ex4()
+A.simulateTask(1000).then(res => console.log('Ex5 result: ', res))
+await A.ex6()
+await A.ex7()
+await A.ex8()
+await A.ex9()
+await A.ex10()
 
-resolveNumber.then((value) => {
-    console.log(value);
-})
+console.log("=== Run B ===")
+await B.ex12()
+await B.ex13()
+console.log(B.ex14(5))
+await B.ex15()
+await B.ex16()
+await B.ex17()
+await B.fetchUsers([1, 2, 3])
+await B.ex20()
 
-rejectWithError.catch((error) => {
-    console.error(error);
-})
-
-displayNumberRadom
-    .then((value) => {
-        console.log(value);
-    })
-    .catch((error) => {
-        console.error(error);
-    })
-
-simulateTask(1000)
-.then(value => console.log(value))
-.catch(error => console.log(error))
-
-
- 
+console.log("=== Run C ===")
+await C.ex21()
+await C.ex22()
+await C.ex23()
+await C.postData()
+await C.downloadFile()
+await C.ex26()
+console.log(await C.fetchWithRetry("https://jsonplaceholder.typicode.com/todos/1", 3))
+await C.batchProcess()
+await C.queueProcess()
+await C.ex30()
